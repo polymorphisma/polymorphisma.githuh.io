@@ -36,3 +36,12 @@ body {
   font-style: italic;
   font-weight: 100;
 }
+
+.white-text {
+  color: white;
+}
+
+.black-text {
+  color: black;
+  font-size: xx-large;
+}
