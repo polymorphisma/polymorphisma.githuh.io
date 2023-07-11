@@ -5,3 +5,42 @@
 body {
   font-family: "Montserrat", sans-serif;
 }
+
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+/* write css to make text inside of .coentent class at center */
+.content {
+  color: white;
+  position: fixed;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.white-text {
+  color: white;
+}
+
+.black-text {
+  color: black;
+}
