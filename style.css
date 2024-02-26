@@ -56,18 +56,15 @@ section{
 
 .main-container .inner-container{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 40vh;
-    width: 50vw;
-    border: 1px solid white;
+    border: 1px dashed white;
     border-radius: 10px;
     overflow: hidden;
+    padding: 10px;
 }
 
 .inner-container .text-container{
-    flex: 6.5;
-    padding-left: 30px;
     line-height: 1;
 }
 
@@ -85,36 +82,40 @@ section{
 .inner-container .text-container .third-text{
     font-size: 40px;
 }
+
 .inner-container .image-container{
-    flex: 3.5;
+  max-height: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 .inner-container .image-container img{
-    width: 100%;
-
-    /* border-radius: 50%; */
+    /* width: 150px; */
+    height: 250px;
+    border-radius: 50%;
 }
 
 
 .main-container .button-container{
     display: flex;
-    align-items: end;
-    justify-content: end;
-    width: 50vw;
+    align-items: center;
+    justify-content: space-between;
+    width: 47vw;
 }
+
 .floating-icon{
     text-decoration: none;
     color: white;
-    font-size: 50px;
+    font-size: 40px;
     position: absolute;
     transform: translate(-50%, -50%);
     /* animation: floatAnimation 5s infinite alternate ease-in-out; */
-
 }
 
-.linkedin-icon {
-    top: 75%;
-    left: 27%;
-  }
+.mail-icon{
+  font-size: 35px;
+}
+
   
   @keyframes floatAnimation {
     0% {
@@ -133,6 +134,27 @@ section{
 
 
 
+
+.creative-button{
+  font-family: "Kode Mono", monospace;
+  display: inline-block;
+  font-size: 1em;
+  padding: 0.5em 1.5em;
+  margin-top: 5px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  color: #fff;
+  border-color: white;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px rgba(255, 255, 255, 0.5);
+
+  text-decoration: none;
+}
 /* button */
 .bubbly-button {
     font-family: "Kode Mono", monospace;
