@@ -1,22 +1,7 @@
-let coordinates = new Array();
-
-
-function returnRandom(){
-  while(true){
-    tempCords = getRandomPointInView()
-    if(tempCords in coordinates){
-      continue
-    }else{
-      coordinates.push(tempCords)
-      return tempCords
-    }
-  }
-}
-
 function getRandomPointInView() {
   // Get viewport dimensions
-  const viewportWidth = window.innerWidth;
-  const viewportHeight = window.innerHeight - 20;
+  const viewportWidth = window.screen.width;
+  const viewportHeight = window.screen.height;
 
   const randomX = Math.floor(Math.random() * viewportWidth);
   const randomY = Math.floor(Math.random() * viewportHeight);
@@ -24,7 +9,7 @@ function getRandomPointInView() {
   return { top: randomX, left: randomY };
 }
 
-function setUrl(){
+function setUrlForTextAnimation(){
   let width = screen.width;
   let animation_container = document.getElementById('animated-text')
   if( width < 375){
@@ -39,16 +24,16 @@ function setUrl(){
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    setUrl()
+    setUrlForTextAnimation()
     const iconContainer = document.querySelector('.icon-container');
     const icons = iconContainer.querySelectorAll('.floating-icon');
   
     // Define initial positions for each icon type
     const initialPositions = {
-      'linkedin-icon':returnRandom(),
-      'github-icon':returnRandom(),
-      'instagram-icon':returnRandom(),
-      'facebook-icon':returnRandom(),
+      'linkedin-icon':getRandomPointInView(),
+      'github-icon':getRandomPointInView(),
+      'instagram-icon':getRandomPointInView(),
+      'facebook-icon':getRandomPointInView(),
     };
     
     let animationFrames = {}; // Object to store animation frames for each icon
@@ -61,20 +46,19 @@ document.addEventListener("DOMContentLoaded", function() {
         const initialLeft = initialPositions[iconType].left;
         const maxX = window.innerWidth - iconSize;
         const maxY = window.innerHeight - iconSize;
-        let x = (initialLeft / 100) * maxX;
-        let y = (initialTop / 100) * maxY;
+
+
+        let x = initialLeft;
+        let y = initialTop;
   
         // Initialize random floating direction and speed
         let deltaX = (Math.random() - 0.5) * 2;
         let deltaY = (Math.random() - 0.5) * 2;
-        const speed = Math.random() * 2 + 2; // Random speed between 1 and 3 pixels per frame
+        const speed = Math.random() * 2 + 2; // Random speed between 1 and 4 pixels per frame
   
         // Animation loop
         function floatStep() {
-          // Update position based on direction and speed
-          x += deltaX * speed;
-          y += deltaY * speed;
-  
+
           // Check if the icon is out of bounds and adjust its position
           if (x < 0) {
             x = 0;
@@ -95,12 +79,16 @@ document.addEventListener("DOMContentLoaded", function() {
   
           icon.style.left = `${x}px`;
           icon.style.top = `${y}px`;
+
+          // Update position based on direction and speed
+          x += deltaX * speed;
+          y += deltaY * speed;
+  
           animationFrames[iconType] = requestAnimationFrame(floatStep);
         }
   
         animationFrames[iconType] = requestAnimationFrame(floatStep);
       });
-      isFloating = true;
     }
 
     // Start floating initially
