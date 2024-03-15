@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer"></script>
+
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'> 
 
@@ -24,15 +26,14 @@
             <a href="https://www.facebook.com/shrawan.sunar.6" target="_blank" class="floating-icon facebook-icon"><i class="fa fa-facebook-official"></i></a>
             <a href="https://www.instagram.com/shrawansunar.6/" target="_blank" class="floating-icon instagram-icon"><i class="fa fa-instagram"></i></a>
             <a href="https://github.com/polymorphisma" target="_blank" class="floating-icon github-icon"><i class="fa fa-github-square"></i></a>
-
-          </div>
+        </div>
 
         <div class="main-container">
             <div class="inner-container">
                 <div class="text-container">
                     <p class="first-text">Hi,</p>
                     <p class="second-text">I am</p>
-                    <p class="third-text"><img src="https://readme-typing-svg.herokuapp.com?font=Kode Mono=&size=30&width=450&Center=true&color=F7F7F7&lines=Shrawan sunar,;Computer+Science+Student,;Self-taught+Developer,;ML+Enthusiast,;Active+Learner/Researcher,;"></img></p>
+                    <p class="third-text" id="animated-text"></p>
                 </div>
                 <div class="image-container">
                     <img src="/image/me.jpg" alt="My image">
@@ -41,14 +42,18 @@
             <div class="button-container">
                 <!-- <button class="download-button"><i class="fa fa-download"></i> Download CV</button>                         -->
 
-                <div>
-                    <a class="creative-button" href="/files/resume.pdf" download>Download CV</a> 
-                    <a href="mailto:shrawansunar.6@gmail.com" target="_blank" class="creative-button">Contact me</a>
+                <div class="buttons">
+                    <a class="creative-button download-csv" href="/files/resume.pdf" download>Download CV</a> 
+                    <a href="mailto:shrawansunar.6@gmail.com" target="_blank" class="creative-button contact-me">Contact me</a>
                 </div>
-                <button class="bubbly-button">Can't catch me!</button>
             </div>
         </div>
     </section>
+
+    <!-- <section>
+        <model-viewer class="avatar" src="https://models.readyplayer.me/65ef238b0d14e501b7174d31.glb"
+        alt="A 3D model of an avatar" camera-controls autoplay></model-viewer>
+    </section> -->
 
 </body>
 </html>

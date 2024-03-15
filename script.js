@@ -1,18 +1,57 @@
+let coordinates = new Array();
+
+
+function returnRandom(){
+  while(true){
+    tempCords = getRandomPointInView()
+    if(tempCords in coordinates){
+      continue
+    }else{
+      coordinates.push(tempCords)
+      return tempCords
+    }
+  }
+}
+
+function getRandomPointInView() {
+  // Get viewport dimensions
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight - 20;
+
+  const randomX = Math.floor(Math.random() * viewportWidth);
+  const randomY = Math.floor(Math.random() * viewportHeight);
+
+  return { top: randomX, left: randomY };
+}
+
+function setUrl(){
+  let width = screen.width;
+  let animation_container = document.getElementById('animated-text')
+  if( width < 375){
+    animation_container.innerHTML = `<img src="https://readme-typing-svg.herokuapp.com?font=Kode Mono=&size=20&width=300&Center=true&color=F7F7F7&lines=Shrawan sunar,;Computer+Science+Student,;Self-taught+Developer,;ML+Enthusiast,;Active+Learner/Researcher,;"></img>`
+
+  }
+  else if(width < 500){
+    animation_container.innerHTML = `<img src="https://readme-typing-svg.herokuapp.com?font=Kode Mono=&size=24&width=350&Center=true&color=F7F7F7&lines=Shrawan sunar,;Computer+Science+Student,;Self-taught+Developer,;ML+Enthusiast,;Active+Learner/Researcher,;"></img>`
+  }else{
+    animation_container.innerHTML = `<img src="https://readme-typing-svg.herokuapp.com?font=Kode Mono=&size=30&width=450&Center=true&color=F7F7F7&lines=Shrawan sunar,;Computer+Science+Student,;Self-taught+Developer,;ML+Enthusiast,;Active+Learner/Researcher,;"></img>`
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function() {
+    setUrl()
     const iconContainer = document.querySelector('.icon-container');
     const icons = iconContainer.querySelectorAll('.floating-icon');
   
     // Define initial positions for each icon type
     const initialPositions = {
-      'linkedin-icon': { top: 35+6, left: 25 },
-      'github-icon': { top: 41+6, left: 25 },
-      'instagram-icon': { top: 47+6, left: 25 },
-      'facebook-icon': { top: 53+6, left: 25 },
+      'linkedin-icon':returnRandom(),
+      'github-icon':returnRandom(),
+      'instagram-icon':returnRandom(),
+      'facebook-icon':returnRandom(),
     };
-  
+    
     let animationFrames = {}; // Object to store animation frames for each icon
-    let isFloating = false; // Flag to track if icons are currently floating
   
     function startFloating() {
       icons.forEach(icon => {
@@ -28,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Initialize random floating direction and speed
         let deltaX = (Math.random() - 0.5) * 2;
         let deltaY = (Math.random() - 0.5) * 2;
-        const speed = Math.random() * 2 + 1; // Random speed between 1 and 3 pixels per frame
+        const speed = Math.random() * 2 + 2; // Random speed between 1 and 3 pixels per frame
   
         // Animation loop
         function floatStep() {
@@ -63,37 +102,9 @@ document.addEventListener("DOMContentLoaded", function() {
       });
       isFloating = true;
     }
-  
-    function stopFloating() {
-      icons.forEach(icon => {
-        const iconType = icon.classList[1];
-        cancelAnimationFrame(animationFrames[iconType]);
-      });
-      isFloating = false;
-    }
 
     // Start floating initially
     startFloating();
   
     // Event listener for the button click
-    document.querySelector('.bubbly-button').addEventListener('click', function() {
-      if (isFloating) {
-        stopFloating();
-        // Reset icon positions to initial positions
-        icons.forEach(icon => {
-          const iconType = icon.classList[1];
-          const initialTop = initialPositions[iconType].top;
-          const initialLeft = initialPositions[iconType].left;
-          const iconSize = icon.offsetWidth;
-          const maxX = window.innerWidth - iconSize;
-          const maxY = window.innerHeight - iconSize;
-          let x = (initialLeft / 100) * maxX;
-          let y = (initialTop / 100) * maxY;
-          icon.style.left = `${x}px`;
-          icon.style.top = `${y}px`;
-        });
-      } else {
-        startFloating();
-      }
-    });
 });
